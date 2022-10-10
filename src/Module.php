@@ -3,6 +3,7 @@ namespace MonthlyBasis\Category;
 
 use MonthlyBasis\Category\Model\Db as CategoryDb;
 use MonthlyBasis\Category\Model\Factory as CategoryFactory;
+use MonthlyBasis\Category\Model\Service as CategoryService;
 use MonthlyBasis\Category\Model\Table as CategoryTable;
 
 class Module
@@ -29,6 +30,18 @@ class Module
                     return new CategoryFactory\FromSlug(
                         $sm->get(CategoryFactory\FromArray::class),
                         $sm->get(CategoryTable\Category::class),
+                    );
+                },
+                CategoryService\Categories\ChildCategories::class => function ($sm) {
+                    return new CategoryService\Categories\ChildCategories(
+                        $sm->get(CategoryFactory\FromCategoryId::class),
+                        $sm->get(CategoryTable\CategoryParentChild::class),
+                    );
+                },
+                CategoryService\Categories\ParentCategories::class => function ($sm) {
+                    return new CategoryService\Categories\ParentCategories(
+                        $sm->get(CategoryFactory\FromCategoryId::class),
+                        $sm->get(CategoryTable\CategoryParentChild::class),
                     );
                 },
                 CategoryTable\Category::class => function ($sm) {
