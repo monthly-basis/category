@@ -36,6 +36,11 @@ class Module
                         $sm->get(CategoryDb\Sql::class)
                     );
                 },
+                CategoryTable\CategoryParentChild::class => function ($sm) {
+                    return new CategoryTable\CategoryParentChild(
+                        $sm->get(CategoryDb\Sql::class)
+                    );
+                },
             ],
         ];
     }
