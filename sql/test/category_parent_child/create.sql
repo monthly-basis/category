@@ -6,4 +6,4 @@ CREATE TABLE `category_parent_child` (
   UNIQUE KEY `parent_id_child_id` (`parent_id`, `child_id`),
   FOREIGN KEY (`parent_id`) REFERENCES `category` (`category_id`),
   FOREIGN KEY (`child_id`) REFERENCES `category` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_as_cs;

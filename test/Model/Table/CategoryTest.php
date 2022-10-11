@@ -8,7 +8,9 @@ class CategoryTest extends TableTestCase
 {
     protected function setup(): void
     {
+        $this->setForeignKeyChecks(0);
         $this->dropAndCreateTable('category');
+        $this->setForeignKeyChecks(1);
 
         $this->categoryTable = new CategoryTable\Category(
             $this->getSql()
