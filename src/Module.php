@@ -26,6 +26,12 @@ class Module
                 CategoryFactory\FromArray::class => function ($sm) {
                     return new CategoryFactory\FromArray();
                 },
+                CategoryFactory\FromName::class => function ($sm) {
+                    return new CategoryFactory\FromName(
+                        $sm->get(CategoryFactory\FromArray::class),
+                        $sm->get(CategoryTable\Category::class),
+                    );
+                },
                 CategoryFactory\FromSlug::class => function ($sm) {
                     return new CategoryFactory\FromSlug(
                         $sm->get(CategoryFactory\FromArray::class),
