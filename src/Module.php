@@ -5,9 +5,28 @@ use MonthlyBasis\Category\Model\Db as CategoryDb;
 use MonthlyBasis\Category\Model\Factory as CategoryFactory;
 use MonthlyBasis\Category\Model\Service as CategoryService;
 use MonthlyBasis\Category\Model\Table as CategoryTable;
+use MonthlyBasis\Category\View\Helper as CategoryHelper;
 
 class Module
 {
+    public function getConfig()
+    {
+        return [
+            'view_helpers' => [
+                'aliases' => [
+                    'buildCategoryFromName' => CategoryHelper\Factory\FromName::class,
+                ],
+                'factories' => [
+                    CategoryHelper\Factory\FromName::class => function ($sm) {
+                        return new CategoryHelper\Factory\FromName(
+                            $sm->get(CategoryFactory\FromName::class),
+                        );
+                    }
+                ],
+            ],
+        ];
+    }
+
     public function getServiceConfig()
     {
         return [
