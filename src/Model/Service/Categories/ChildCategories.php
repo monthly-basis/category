@@ -20,9 +20,16 @@ class ChildCategories
         CategoryEntity\Category $categoryEntity
     ): Generator {
         $result = $this->categoryParentChildTable->select(
+            joinArguments: [
+                'category',
+                'category.category_id = category_parent_child.child_id',
+            ],
             where: [
                 'parent_id' => $categoryEntity->getCategoryId()
-            ]
+            ],
+            order: [
+                'category.name ASC',
+            ],
         );
         foreach ($result as $array) {
             yield $this->fromCategoryIdFactory->buildFromCategoryId(
