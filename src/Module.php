@@ -69,6 +69,11 @@ class Module
                         $sm->get(CategoryTable\CategoryParentChild::class),
                     );
                 },
+                CategoryService\RootRelativeUrl\FromName::class => function ($sm) {
+                    return new CategoryService\RootRelativeUrl\FromName(
+                        $sm->get(CategoryTable\Category::class),
+                    );
+                },
                 CategoryTable\Category::class => function ($sm) {
                     return new CategoryTable\Category(
                         $sm->get(CategoryDb\Sql::class)
