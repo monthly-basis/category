@@ -11,6 +11,19 @@ class CategoryTest extends TestCase
         $this->categoryEntity = new CategoryEntity\Category();
     }
 
+    public function test___isset()
+    {
+        $this->assertFalse(
+            isset($this->categoryEntity->name)
+        );
+
+        $this->categoryEntity->name = 'Name';
+
+        $this->assertTrue(
+            isset($this->categoryEntity->name)
+        );
+    }
+
     public function test_settersAndGetters()
     {
         $categoryId = 1234;

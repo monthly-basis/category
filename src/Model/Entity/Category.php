@@ -10,6 +10,21 @@ class Category
     protected string $name;
     protected string $slug;
 
+    public function __get(string $name): mixed
+    {
+        return $this->$name;
+    }
+
+    public function __isset(string $name): bool
+    {
+        return isset($this->$name);
+    }
+
+    public function __set(string $name, mixed $value): void
+    {
+        $this->$name = $value;
+    }
+
     public function getCategoryId(): int
     {
         return $this->categoryId;
