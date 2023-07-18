@@ -57,6 +57,12 @@ class Module
                         $sm->get(CategoryTable\Category::class),
                     );
                 },
+                CategoryService\Categories::class => function ($sm) {
+                    return new CategoryService\Categories(
+                        $sm->get(CategoryFactory\FromArray::class),
+                        $sm->get(CategoryTable\Category::class),
+                    );
+                },
                 CategoryService\Categories\ChildCategories::class => function ($sm) {
                     return new CategoryService\Categories\ChildCategories(
                         $sm->get(CategoryFactory\FromCategoryId::class),
