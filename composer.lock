@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88b4c0ea42ef5d1c5ab2f3811c258d89",
+    "content-hash": "9d7baaa372b6f34bb2a234501de8c94c",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -1332,6 +1332,40 @@
                 "source": "https://github.com/monthly-basis/laminas-test/tree/v2.2.2"
             },
             "time": "2023-02-25T02:12:46+00:00"
+        },
+        {
+            "name": "monthly-basis/string",
+            "version": "v3.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/string.git",
+                "reference": "ef355f31c2fdd7ab72735b813479542edcd6205d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/string/zipball/ef355f31c2fdd7ab72735b813479542edcd6205d",
+                "reference": "ef355f31c2fdd7ab72735b813479542edcd6205d",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-test": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\String\\": "src/",
+                    "MonthlyBasis\\StringTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/monthly-basis/string/issues",
+                "source": "https://github.com/monthly-basis/string/tree/v3.6.7"
+            },
+            "time": "2022-10-13T22:41:34+00:00"
         },
         {
             "name": "myclabs/deep-copy",

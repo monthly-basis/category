@@ -11,6 +11,7 @@
         "laminas/laminas-db": "^2.9",
         "laminas/laminas-test": "^4.0",
         "monthly-basis/laminas": "^0.0",
-        "monthly-basis/laminas-test": "^2.0"
+        "monthly-basis/laminas-test": "^2.0",
+        "monthly-basis/string": "^3.6"
     }
 }
