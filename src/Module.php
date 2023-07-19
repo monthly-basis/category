@@ -6,6 +6,7 @@ use MonthlyBasis\Category\Model\Factory as CategoryFactory;
 use MonthlyBasis\Category\Model\Service as CategoryService;
 use MonthlyBasis\Category\Model\Table as CategoryTable;
 use MonthlyBasis\Category\View\Helper as CategoryHelper;
+use MonthlyBasis\String\Model\Service as StringService;
 
 class Module
 {
@@ -73,6 +74,12 @@ class Module
                     return new CategoryService\Categories\ParentCategories(
                         $sm->get(CategoryFactory\FromCategoryId::class),
                         $sm->get(CategoryTable\CategoryParentChild::class),
+                    );
+                },
+                CategoryService\Create\FromName::class => function ($sm) {
+                    return new CategoryService\Create\FromName(
+                        $sm->get(CategoryTable\Category::class),
+                        $sm->get(StringService\UrlFriendly::class),
                     );
                 },
                 CategoryService\RootRelativeUrl\FromName::class => function ($sm) {
