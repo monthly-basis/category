@@ -10,9 +10,12 @@ use MonthlyBasis\String\Model\Service as StringService;
 /**
  * Create category from name.
  *
- * If category already exists, return false.
+ * Use slug, not name, to determine whether category already exists.
+ * This is because 'Math', 'Math!', 'MATH', and 'Math ' all result in the same slug.
  *
- * If category does not exist, create it and return true.
+ * Get slug from name.
+ * If category slug already exists, return false.
+ * If category slug does not exist, create it and return true.
  */
 class FromName
 {
@@ -23,6 +26,8 @@ class FromName
 
     public function createFromName(string $name): bool
     {
+        $slug = $this->urlFriendlyService->getUrlFriendly($name);
+
         $result = $this->categoryTable->select(
             columns: [
                 'category_id',
@@ -30,14 +35,13 @@ class FromName
                 'name',
             ],
             where: [
-                'name' => $name,
+                'slug' => $slug,
             ],
         );
+
         if ($result->current() !== false) {
             return false;
         }
-
-        $slug = $this->urlFriendlyService->getUrlFriendly($name);
 
         $this->categoryTable->insert([
             'slug' => $slug,
