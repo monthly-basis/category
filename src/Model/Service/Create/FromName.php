@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace MonthlyBasis\Category\Model\Service\Create;
 
+use MonthlyBasis\Category\Model\Entity as CategoryEntity;
+use MonthlyBasis\Category\Model\Factory as CategoryFactory;
 use MonthlyBasis\Category\Model\Table as CategoryTable;
 use MonthlyBasis\String\Model\Service as StringService;
 
@@ -20,11 +22,12 @@ use MonthlyBasis\String\Model\Service as StringService;
 class FromName
 {
     public function __construct(
+        protected CategoryFactory\FromSlug $fromSlugFactory,
         protected CategoryTable\Category $categoryTable,
         protected StringService\UrlFriendly $urlFriendlyService,
     ) {}
 
-    public function createFromName(string $name): bool
+    public function createFromName(string $name): CategoryEntity\Category
     {
         $slug = $this->urlFriendlyService->getUrlFriendly($name);
 
@@ -39,15 +42,13 @@ class FromName
             ],
         );
 
-        if ($result->current() !== false) {
-            return false;
+        if ($result->current() === false) {
+            $this->categoryTable->insert([
+                'slug' => $slug,
+                'name' => $name,
+            ]);
         }
 
-        $this->categoryTable->insert([
-            'slug' => $slug,
-            'name' => $name,
-        ]);
-
-        return true;
+        return $this->fromSlugFactory->buildFromSlug($slug);
     }
 }

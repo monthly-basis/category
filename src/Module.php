@@ -78,6 +78,7 @@ class Module
                 },
                 CategoryService\Create\FromName::class => function ($sm) {
                     return new CategoryService\Create\FromName(
+                        $sm->get(CategoryFactory\FromSlug::class),
                         $sm->get(CategoryTable\Category::class),
                         $sm->get(StringService\UrlFriendly::class),
                     );
