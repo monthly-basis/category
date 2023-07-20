@@ -1265,16 +1265,16 @@
         },
         {
             "name": "monthly-basis/laminas",
-            "version": "v0.0.9",
+            "version": "v0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monthly-basis/laminas.git",
-                "reference": "92ef3bc753f226f7ae68bc6e026b334eb95f058f"
+                "reference": "fb251ae5ce2369ac171c53abbb0cd97ac7ccebfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monthly-basis/laminas/zipball/92ef3bc753f226f7ae68bc6e026b334eb95f058f",
-                "reference": "92ef3bc753f226f7ae68bc6e026b334eb95f058f",
+                "url": "https://api.github.com/repos/monthly-basis/laminas/zipball/fb251ae5ce2369ac171c53abbb0cd97ac7ccebfc",
+                "reference": "fb251ae5ce2369ac171c53abbb0cd97ac7ccebfc",
                 "shasum": ""
             },
             "require": {
@@ -1294,9 +1294,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monthly-basis/laminas/issues",
-                "source": "https://github.com/monthly-basis/laminas/tree/v0.0.9"
+                "source": "https://github.com/monthly-basis/laminas/tree/v0.0.10"
             },
-            "time": "2022-11-11T18:30:04+00:00"
+            "time": "2023-07-20T01:08:52+00:00"
         },
         {
             "name": "monthly-basis/laminas-test",
