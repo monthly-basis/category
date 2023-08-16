@@ -70,6 +70,11 @@ class Module
                         $sm->get(CategoryTable\CategoryParentChild::class),
                     );
                 },
+                CategoryService\Categories\ChildCategories\Count::class => function ($sm) {
+                    return new CategoryService\Categories\ChildCategories\Count(
+                        $sm->get(CategoryTable\CategoryParentChild::class),
+                    );
+                },
                 CategoryService\Categories\ParentCategories::class => function ($sm) {
                     return new CategoryService\Categories\ParentCategories(
                         $sm->get(CategoryFactory\FromCategoryId::class),
