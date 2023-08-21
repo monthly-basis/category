@@ -39,6 +39,42 @@ class CategoryParentChild extends LaminasDb\Table
         );
     }
 
+    public function selectChildIdNameWhereParentIdLimit(
+        int $parentId,
+        int $limitOffset,
+        int $limitRowCount,
+    ): Result {
+        $sql = '
+            SELECT `child_id_name`.`child_id`
+                 , `child_id_name`.`name`
+              FROM
+            (
+                SELECT `category_parent_child`.`child_id`
+                     , `category`.`name`
+
+                  FROM `category_parent_child`
+
+                  JOIN `category`
+                    ON `category`.`category_id` = `category_parent_child`.`child_id`
+
+                 WHERE `category_parent_child`.`parent_id` = ?
+
+                 ORDER
+                    BY `category`.`question_count_cached` DESC
+                 LIMIT ?, ?
+            ) AS `child_id_name`
+             ORDER
+                BY `child_id_name`.`name` ASC
+                 ;
+        ';
+        $parameters = [
+            $parentId,
+            $limitOffset,
+            $limitRowCount,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectCountWhereParentId(int $parentId): Result
     {
         $sql = '

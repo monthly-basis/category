@@ -17,6 +17,16 @@ class CategoryParentChildTest extends TableTestCase
         );
     }
 
+    public function test_selectChildIdNameWhereParentIdLimit()
+    {
+        $result = $this->categoryParentChildTable->selectChildIdNameWhereParentIdLimit(
+            12345,
+            0,
+            10
+        );
+        $this->assertEmpty($result);
+    }
+
     public function test_selectCountWhereParentId()
     {
         $result = $this->categoryParentChildTable->selectCountWhereParentId(
