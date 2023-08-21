@@ -20,6 +20,9 @@ class ChildCategories
         CategoryEntity\Category $categoryEntity
     ): Generator {
         $result = $this->categoryParentChildTable->select(
+            columns: [
+                'child_id',
+            ],
             joinArguments: [
                 'category',
                 'category.category_id = category_parent_child.child_id',
