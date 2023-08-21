@@ -17,11 +17,20 @@ class ChildCategories
     ) {}
 
     public function getChildCategories(
-        CategoryEntity\Category $categoryEntity
+        CategoryEntity\Category $categoryEntity,
+        int $limit = null,
     ): Generator {
-        $result = $this->categoryParentChildTable->selectChildIdWhereParentId(
-            $categoryEntity->categoryId
-        );
+        if (isset($limit)) {
+            $result = $this->categoryParentChildTable->selectChildIdWhereParentIdLimit(
+                $categoryEntity->categoryId,
+                $limit
+            );
+        } else {
+            $result = $this->categoryParentChildTable->selectChildIdWhereParentId(
+                $categoryEntity->categoryId
+            );
+        }
+
         foreach ($result as $array) {
             yield $this->fromCategoryIdFactory->buildFromCategoryId(
                 $array['child_id']
