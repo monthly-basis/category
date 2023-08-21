@@ -19,6 +19,26 @@ class CategoryParentChild extends LaminasDb\Table
         $this->adapter = $sql->getAdapter();
     }
 
+    public function selectChildIdWhereParentId(
+        int $parentId
+    ): Result {
+        return $this->select(
+            columns: [
+                'child_id',
+            ],
+            joinArguments: [
+                'category',
+                'category.category_id = category_parent_child.child_id',
+            ],
+            where: [
+                'parent_id' => $parentId,
+            ],
+            order: [
+                'category.name ASC',
+            ],
+        );
+    }
+
     public function selectCountWhereParentId(int $parentId): Result
     {
         $sql = '

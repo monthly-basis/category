@@ -19,20 +19,8 @@ class ChildCategories
     public function getChildCategories(
         CategoryEntity\Category $categoryEntity
     ): Generator {
-        $result = $this->categoryParentChildTable->select(
-            columns: [
-                'child_id',
-            ],
-            joinArguments: [
-                'category',
-                'category.category_id = category_parent_child.child_id',
-            ],
-            where: [
-                'parent_id' => $categoryEntity->getCategoryId()
-            ],
-            order: [
-                'category.name ASC',
-            ],
+        $result = $this->categoryParentChildTable->selectChildIdWhereParentId(
+            $categoryEntity->categoryId
         );
         foreach ($result as $array) {
             yield $this->fromCategoryIdFactory->buildFromCategoryId(
