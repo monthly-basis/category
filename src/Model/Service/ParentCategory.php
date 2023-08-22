@@ -33,7 +33,8 @@ class ParentCategory
                 'child_id' => $categoryEntity->categoryId
             ],
             order: [
-                'category.question_count_cached ASC',
+                'category.question_count_cached DESC',
+                'category.name ASC',
             ],
             limit: 1,
         );
