@@ -88,6 +88,12 @@ class Module
                         $sm->get(StringService\UrlFriendly::class),
                     );
                 },
+                CategoryService\ParentCategory::class => function ($sm) {
+                    return new CategoryService\ParentCategory(
+                        $sm->get(CategoryFactory\FromCategoryId::class),
+                        $sm->get(CategoryTable\CategoryParentChild::class),
+                    );
+                },
                 CategoryService\RootRelativeUrl\FromName::class => function ($sm) {
                     return new CategoryService\RootRelativeUrl\FromName(
                         $sm->get(CategoryTable\Category::class),
