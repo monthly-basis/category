@@ -7,6 +7,7 @@ namespace MonthlyBasis\Category\Model\Entity;
 class Category
 {
     protected int $categoryId;
+    protected string $description;
     protected string $name;
     protected string $slug;
 
