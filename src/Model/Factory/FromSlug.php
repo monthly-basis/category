@@ -27,6 +27,7 @@ class FromSlug
                 'category_id',
                 'slug',
                 'name',
+                'description',
             ],
             where: [
                 'slug' => $slug,
