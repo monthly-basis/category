@@ -3,6 +3,7 @@ CREATE TABLE `category` (
   `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL,
+  `image_rru` varchar(255) COLLATE utf8mb4_0900_as_cs DEFAULT NULL,
   `question_count_cached` int unsigned DEFAULT NULL,
   `created_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`category_id`),
