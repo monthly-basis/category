@@ -20,6 +20,9 @@ class FromArray
         if (isset($array['description'])) {
             $categoryEntity->description = $array['description'];
         }
+        if (isset($array['question_count_cached'])) {
+            $categoryEntity->questionCountCached = $array['question_count_cached'];
+        }
 
         return $categoryEntity;
     }
