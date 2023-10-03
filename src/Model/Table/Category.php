@@ -13,4 +13,16 @@ class Category extends LaminasDb\Table
         protected \Laminas\Db\Sql\Sql $sql
     ) {
     }
+
+    public function getColumns(): array
+    {
+        return [
+            'category_id',
+            'slug',
+            'name',
+            'description',
+            'question_count_cached',
+            'created_datetime',
+        ];
+    }
 }

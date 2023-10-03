@@ -17,6 +17,15 @@ class CategoryTest extends TableTestCase
         );
     }
 
+    public function test_getColumns()
+    {
+        $result = $this->categoryTable->select(
+            columns: $this->categoryTable->getColumns(),
+            limit: 1,
+        );
+        $this->assertEmpty($result);
+    }
+
     public function test_insert()
     {
         $result = $this->categoryTable->insert(
