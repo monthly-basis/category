@@ -23,12 +23,7 @@ class FromSlug
         string $slug
     ): CategoryEntity\Category {
         $result = $this->categoryTable->select(
-            columns: [
-                'category_id',
-                'slug',
-                'name',
-                'description',
-            ],
+            columns: $this->categoryTable->getColumns(),
             where: [
                 'slug' => $slug,
             ],
