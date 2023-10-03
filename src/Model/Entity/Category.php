@@ -8,6 +8,7 @@ class Category
 {
     protected int $categoryId;
     protected string $description;
+    protected string $imageRru;
     protected string $name;
     protected string $slug;
     public int $questionCountCached;
