@@ -10,6 +10,7 @@ class Category
     protected string $description;
     protected string $name;
     protected string $slug;
+    public int $questionCountCached;
 
     public function __get(string $name): mixed
     {
