@@ -21,6 +21,7 @@ class Category extends LaminasDb\Table
             'slug',
             'name',
             'description',
+            'image_rru',
             'question_count_cached',
             'created_datetime',
         ];
