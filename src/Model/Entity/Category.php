@@ -6,11 +6,11 @@ namespace MonthlyBasis\Category\Model\Entity;
 
 class Category
 {
-    protected int $categoryId;
-    protected string $description;
-    protected string $imageRru;
-    protected string $name;
-    protected string $slug;
+    public int $categoryId;
+    public string $description;
+    public string $imageRru;
+    public string $name;
+    public string $slug;
     public int $questionCountCached;
 
     public function __get(string $name): mixed
