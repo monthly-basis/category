@@ -17,11 +17,13 @@ class FromArrayTest extends TestCase
         $array = [
             'category_id'           => 123,
             'name'                  => 'name',
+            'image_rru'             => '/path/to/image.jpeg',
             'question_count_cached' => 456,
             'slug'                  => 'slug',
         ];
         $categoryEntity = new CategoryEntity\Category();
         $categoryEntity->categoryId          = 123;
+        $categoryEntity->imageRru            = '/path/to/image.jpeg';
         $categoryEntity->name                = 'name';
         $categoryEntity->questionCountCached = 456;
         $categoryEntity->slug                = 'slug';
