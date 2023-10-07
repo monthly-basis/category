@@ -12,6 +12,7 @@ class Category extends LaminasDb\Table
     public function __construct(
         protected \Laminas\Db\Sql\Sql $sql
     ) {
+        $this->adapter = $sql->getAdapter();
     }
 
     public function getColumns(): array
@@ -25,5 +26,22 @@ class Category extends LaminasDb\Table
             'question_count_cached',
             'created_datetime',
         ];
+    }
+
+    public function selectCategoryIdWhereMatchAgainst(
+        string $query
+    ): Result {
+        $sql = '
+            SELECT `category_id`
+              FROM `category`
+             WHERE MATCH (`name`) AGAINST (?)
+             ORDER
+                BY `name` ASC
+                 ;
+        ';
+        $parameters = [
+            $query,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 }

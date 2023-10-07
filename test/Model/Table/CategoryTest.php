@@ -43,4 +43,12 @@ class CategoryTest extends TableTestCase
             $result->getGeneratedValue()
         );
     }
+
+    public function test_selectCategoryIdWhereMatchAgainst()
+    {
+        $result = $this->categoryTable->selectCategoryIdWhereMatchAgainst(
+            'query'
+        );
+        $this->assertEmpty($result);
+    }
 }
