@@ -33,17 +33,19 @@ class Category extends LaminasDb\Table
         int $limit = 10,
     ): Result {
         $sql = '
-            SELECT `category_id`
-                 , MATCH (`name`) AGAINST (?) AS `score`
-              FROM `category`
-             WHERE MATCH (`name`) AGAINST (?)
-             ORDER
-                BY `score` DESC
-             LIMIT ?
+            SELECT `category_id` FROM (
+                SELECT `category_id`
+                     , `name`
+                  FROM `category`
+                 WHERE MATCH (`name`) AGAINST (?) > 1
+                 ORDER
+                    BY `question_count_cached` DESC
+                 LIMIT ?
+            ) AS `category`
+            ORDER BY `name` ASC
                  ;
         ';
         $parameters = [
-            $query,
             $query,
             $limit,
         ];
