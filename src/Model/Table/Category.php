@@ -30,7 +30,7 @@ class Category extends LaminasDb\Table
 
     public function selectCategoryIdWhereMatchAgainst(
         string $query,
-        int $limit = 100,
+        int $limit = 10,
     ): Result {
         $sql = '
             SELECT `category_id`
