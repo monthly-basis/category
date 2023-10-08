@@ -15,10 +15,11 @@ class Search
         protected CategoryTable\Category $categoryTable,
     ) {}
 
-    public function search(string $query): Generator
+    public function search(string $query, int $limitRowCount = 10): Generator
     {
         $result = $this->categoryTable->selectCategoryIdWhereMatchAgainst(
-            $query
+            $query,
+            $limitRowCount,
         );
         foreach ($result as $array) {
             yield $this->fromCategoryIdFactory->buildFromCategoryId(

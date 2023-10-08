@@ -30,7 +30,7 @@ class Category extends LaminasDb\Table
 
     public function selectCategoryIdWhereMatchAgainst(
         string $query,
-        int $limit = 10,
+        int $limitRowCount = 10,
     ): Result {
         $sql = '
             SELECT `category_id` FROM (
@@ -47,7 +47,7 @@ class Category extends LaminasDb\Table
         ';
         $parameters = [
             $query,
-            $limit,
+            $limitRowCount,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }
