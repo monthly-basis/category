@@ -34,14 +34,16 @@ class Category extends LaminasDb\Table
     ): Result {
         $sql = '
             SELECT `category_id`
+                 , MATCH (`name`) AGAINST (?) AS `score`
               FROM `category`
              WHERE MATCH (`name`) AGAINST (?)
              ORDER
-                BY `name` ASC
+                BY `score` DESC
              LIMIT ?
                  ;
         ';
         $parameters = [
+            $query,
             $query,
             $limit,
         ];
