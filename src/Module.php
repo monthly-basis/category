@@ -81,6 +81,12 @@ class Module
                         $sm->get(CategoryTable\CategoryParentChild::class),
                     );
                 },
+                CategoryService\Categories\Search::class => function ($sm) {
+                    return new CategoryService\Categories\Search(
+                        $sm->get(CategoryFactory\FromCategoryId::class),
+                        $sm->get(CategoryTable\Category::class),
+                    );
+                },
                 CategoryService\Create\FromName::class => function ($sm) {
                     return new CategoryService\Create\FromName(
                         $sm->get(CategoryFactory\FromSlug::class),
