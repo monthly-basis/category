@@ -29,7 +29,8 @@ class Category extends LaminasDb\Table
     }
 
     public function selectCategoryIdWhereMatchAgainst(
-        string $query
+        string $query,
+        int $limit = 100,
     ): Result {
         $sql = '
             SELECT `category_id`
@@ -37,10 +38,12 @@ class Category extends LaminasDb\Table
              WHERE MATCH (`name`) AGAINST (?)
              ORDER
                 BY `name` ASC
+             LIMIT ?
                  ;
         ';
         $parameters = [
             $query,
+            $limit,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }
