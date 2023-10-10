@@ -5,6 +5,7 @@ use MonthlyBasis\Category\Model\Entity as CategoryEntity;
 use MonthlyBasis\Category\Model\Factory as CategoryFactory;
 use MonthlyBasis\Category\Model\Service as CategoryService;
 use MonthlyBasis\Category\Model\Table as CategoryTable;
+use MonthlyBasis\String\Model\Service as StringService;
 use MonthlyBasis\LaminasTest\TableTestCase;
 
 class SearchTest extends TableTestCase
@@ -23,10 +24,14 @@ class SearchTest extends TableTestCase
         $this->categoryTableMock = $this->createMock(
             CategoryTable\Category::class
         );
+        $this->keepFirstWordsServiceMock = $this->createMock(
+            StringService\KeepFirstWords::class
+        );
 
         $this->searchService = new CategoryService\Categories\Search(
             $this->fromCategoryIdFactoryMock,
             $this->categoryTableMock,
+            $this->keepFirstWordsServiceMock,
         );
     }
 

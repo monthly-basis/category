@@ -85,6 +85,7 @@ class Module
                     return new CategoryService\Categories\Search(
                         $sm->get(CategoryFactory\FromCategoryId::class),
                         $sm->get(CategoryTable\Category::class),
+                        $sm->get(StringService\KeepFirstWords::class),
                     );
                 },
                 CategoryService\Create\FromName::class => function ($sm) {
