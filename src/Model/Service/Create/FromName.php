@@ -38,7 +38,7 @@ class FromName
             // Do nothing.
         }
 
-        if (strlen($slug) <= 64) {
+        if (strlen($name) <= 64) {
             $this->categoryTable->insert([
                 'slug' => $slug,
                 'name' => $name,
