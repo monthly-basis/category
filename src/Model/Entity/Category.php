@@ -6,6 +6,7 @@ namespace MonthlyBasis\Category\Model\Entity;
 
 class Category
 {
+    public bool $active;
     public int $categoryId;
     public string $description;
     public string $imageRru;
