@@ -15,6 +15,7 @@ class FromArrayTest extends TestCase
     public function test_buildFromArray()
     {
         $array = [
+            'active'                => 1,
             'category_id'           => 123,
             'name'                  => 'name',
             'image_rru'             => '/path/to/image.jpeg',
@@ -22,6 +23,7 @@ class FromArrayTest extends TestCase
             'slug'                  => 'slug',
         ];
         $categoryEntity = new CategoryEntity\Category();
+        $categoryEntity->active              = true;
         $categoryEntity->categoryId          = 123;
         $categoryEntity->imageRru            = '/path/to/image.jpeg';
         $categoryEntity->name                = 'name';

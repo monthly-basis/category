@@ -17,6 +17,8 @@ class FromArray
             ->setSlug($array['slug'])
             ;
 
+        $categoryEntity->active = boolval($array['active']);
+
         if (isset($array['description'])) {
             $categoryEntity->description = $array['description'];
         }
