@@ -11,6 +11,8 @@ use MonthlyBasis\Category\Model\Table as CategoryTable;
 
 class FromCategoryId
 {
+    protected array $cache;
+
     public function __construct(
         protected CategoryFactory\FromArray $fromArrayFactory,
         protected CategoryTable\Category $categoryTable
@@ -22,6 +24,10 @@ class FromCategoryId
     public function buildFromCategoryId(
         int $categoryId
     ): CategoryEntity\Category {
+        if (isset($this->cache[$categoryId])) {
+            return $this->cache[$categoryId];
+        }
+
         $result = $this->categoryTable->select(
             columns: $this->categoryTable->getColumns(),
             where: [
@@ -33,8 +39,10 @@ class FromCategoryId
             throw new CategoryException('Category with category ID does not exist.');
         }
 
-        return $this->fromArrayFactory->buildFromArray(
+        $categoryEntity = $this->fromArrayFactory->buildFromArray(
             $result->current()
         );
+        $this->cache[$categoryId] = $categoryEntity;
+        return $categoryEntity;
     }
 }
