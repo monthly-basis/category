@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.0.27
 
 ```
 ALTER TABLE `category` ADD `active` tinyint unsigned NOT NULL DEFAULT '1' AFTER `question_count_cached`;
