@@ -24,6 +24,7 @@ class Category extends LaminasDb\Table
             'description',
             'image_rru',
             'question_count_cached',
+            'active',
             'created_datetime',
         ];
     }
