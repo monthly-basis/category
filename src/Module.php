@@ -6,6 +6,7 @@ use MonthlyBasis\Category\Model\Factory as CategoryFactory;
 use MonthlyBasis\Category\Model\Service as CategoryService;
 use MonthlyBasis\Category\Model\Table as CategoryTable;
 use MonthlyBasis\Category\View\Helper as CategoryHelper;
+use MonthlyBasis\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\String\Model\Service as StringService;
 
 class Module
@@ -73,6 +74,7 @@ class Module
                 CategoryService\Categories\ChildCategories\Count::class => function ($sm) {
                     return new CategoryService\Categories\ChildCategories\Count(
                         $sm->get(CategoryTable\CategoryParentChild::class),
+                        $sm->get(MemcachedService\Memcached::class),
                     );
                 },
                 CategoryService\Categories\ParentCategories::class => function ($sm) {
