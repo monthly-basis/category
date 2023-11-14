@@ -32,9 +32,15 @@ class ChildCategories
         }
 
         foreach ($result as $array) {
-            yield $this->fromCategoryIdFactory->buildFromCategoryId(
+            $categoryEntity = $this->fromCategoryIdFactory->buildFromCategoryId(
                 $array['child_id']
             );
+
+            if (!$categoryEntity->active) {
+                continue;
+            }
+
+            yield $categoryEntity;
         }
     }
 }
